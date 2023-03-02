@@ -37,7 +37,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void sendMessage() {
     ChatMessage chatMessage =
-        ChatMessage(text: _inputMessage.text, sender: "user");
+        ChatMessage(text: _inputMessage.text, sender: "👤");
 
     setState(() {
       _messages.insert(0, chatMessage);
@@ -49,7 +49,7 @@ class _ChatScreenState extends State<ChatScreen> {
         prompt: chatMessage.text, model: kTranslateModelV3, max_tokens: 200);
 
     subscription = chatGPT!
-        .builder('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',
+        .builder('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',
             orgId: '')
         .onCompleteStream(request: request)
         .listen((response) {
@@ -62,7 +62,7 @@ class _ChatScreenState extends State<ChatScreen> {
           print(response.choices[0].text);
           _messages.insert(0, botMessage);
         } catch (e) {
-          print('Failed');
+          print('Fallo 😥');
         }
       });
     });
@@ -72,7 +72,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chatbot Playground'),
+        title: Text('ChatGPT3 in Flutter 😀'),
         elevation: 0,
         backgroundColor: Color.fromARGB(255, 55, 201, 165),
       ),
@@ -116,7 +116,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   filled: true,
                   fillColor: Colors.white.withOpacity(0.2),
                   hintStyle: TextStyle(fontSize: 14),
-                  hintText: "Type anything",
+                  hintText: "✍️ Escriba aquí",
                   border: OutlineInputBorder(
                       borderSide:
                           BorderSide(width: 0, style: BorderStyle.none)),
